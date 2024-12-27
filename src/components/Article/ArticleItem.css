@@ -29,3 +29,8 @@
   color: rgb(211, 40, 97);
 }
 
+.card a{
+  text-decoration: none;
+  color: #484848;
+}
+
