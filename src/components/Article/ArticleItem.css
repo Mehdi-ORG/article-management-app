@@ -1,0 +1,31 @@
+.btn-article{
+  color: white ;
+  text-decoration: none;
+}
+.btn-article:hover{
+  color: black;
+}
+
+.card{
+  border: none !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all 0.5s;
+}
+
+.card:hover{
+  scale: 1.05;
+}
+
+.card-text{
+  text-align: justify;
+  color: #5d5c5c;
+}
+
+.read-more span{
+ margin-left: 10px;
+}
+
+.read-more:hover{
+  color: rgb(211, 40, 97);
+}
+
