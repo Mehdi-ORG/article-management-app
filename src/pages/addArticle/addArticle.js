@@ -9,13 +9,24 @@ import Swal from "sweetalert2";
 function AddArticle() {
   const [formData, setFormData] = useState({});
 
+  const resetFormData= ()=>{
+    setFormData({
+      title: '',
+      desc: '',
+      image: '',
+      writter: '',
+      category: '',
+      readingtime: '',
+
+    })
+  }
+
   const addArticleHandler = () => {
-    axios.post("http://localhost:5000/article", formData)
-  .then(response => {
-    console.log("Response Status:", response.status);
-    console.log("Response Data:", response.data);
-  })
-  .catch(error => console.error("Error:", error));
+    axios
+      .post("http://localhost:5000/article", formData)
+      .then((response) => {
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   const formhandler = (e) => {
@@ -30,6 +41,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>عنوان مقاله</Form.Label>
             <Form.Control
+              value={formData.title}
               name="title"
               onChange={formhandler}
               type="text"
@@ -39,6 +51,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>توضیح کوتاه</Form.Label>
             <Form.Control
+              value={formData.desc}
               name="desc"
               onChange={formhandler}
               type="text"
@@ -48,6 +61,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>نویسنده مقاله</Form.Label>
             <Form.Control
+              value={formData.writter}
               name="writter"
               onChange={formhandler}
               type="text"
@@ -57,6 +71,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>موضوع مقاله</Form.Label>
             <Form.Control
+              value={formData.category}
               name="category"
               onChange={formhandler}
               type="text"
@@ -66,6 +81,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>عکس مقاله</Form.Label>
             <Form.Control
+              value={formData.image}
               name="image"
               onChange={formhandler}
               type="text"
@@ -75,6 +91,7 @@ function AddArticle() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>مدت زمان خواندن</Form.Label>
             <Form.Control
+              value={formData.readingtime}
               name="readingtime"
               onChange={formhandler}
               type="text"

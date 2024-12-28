@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./Article.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 function Article() {
   const articleId = useParams().articleId;
   const [articleData, setArticleData] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -20,7 +20,7 @@ function Article() {
       .then((response) => setArticleData(response.data));
   }, []);
 
-  const deleteHandler = (id) => {
+  const deleteHandler = (articleId) => {
     Swal.fire({
       title: "مطمئنی که می خوای مقاله رو حذف کنی؟",
       icon: "warning",
@@ -34,12 +34,11 @@ function Article() {
         Swal.fire({
           title: " فایل شما با موفقیت حذف شد",
           icon: "success",
-        })
-        axios.delete(`http://localhost:5000/article/${id}`)
-        navigate('/')
+        });
+        axios.delete(`http://localhost:5000/article/${articleId}`);
+        navigate("/");
       }
     });
-
   };
 
   return (
@@ -74,7 +73,9 @@ function Article() {
                   {" "}
                   حذف مقاله
                 </Button>
-                <Button variant="outline-primary"> ویرایش مقاله</Button>
+                <Link to={`/edit-article/${articleId}`}>
+                  <Button variant="outline-primary"> ویرایش مقاله</Button>
+                </Link>
               </div>
             </div>
           </Col>

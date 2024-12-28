@@ -12,7 +12,7 @@ const routes = [
   {path : '/about' , element: <About/>},
   {path : '/add-article' , element: <AddArticle/>},
   {path : '/article/:articleId' , element : <Article/>},
-  {path : '/edit-article/:edit-articleId' , element : <EditArticle/>}
+  {path : '/edit-article/:editArticleId' , element : <EditArticle/>}
 ]
 export default routes
 
