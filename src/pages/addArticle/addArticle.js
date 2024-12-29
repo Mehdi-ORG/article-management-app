@@ -25,8 +25,24 @@ function AddArticle() {
     axios
       .post("http://localhost:5000/article", formData)
       .then((response) => {
+        if(response.status=== 201){
+          Swal.fire({
+            title: 'مقاله با موفقیت ساخته شد',
+            timer: '1500',
+            timerProgressBar: true,
+            showConfirmButton: false
+          })
+        }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch(error =>{
+       Swal.fire({
+        title: 'مقاله ساخته نشد',
+        timer: '1500',
+        icon: 'error',
+        timerProgressBar: true,
+        showConfirmButton: false
+       })
+      })
   };
 
   const formhandler = (e) => {
